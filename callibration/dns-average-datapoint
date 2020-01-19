@@ -1,0 +1,15 @@
+root@DDOS-Client:~/shockWave/Calibration/DATA-POINTS/BIN# cat make-dns-AVG     
+#! /bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+cd /root/shockWave/Calibration/DATA-POINTS/
+
+cd dns/
+
+AVG=$(echo "scale=2; 0.00" | bc -l)
+for datapoint in *.DP
+do
+    val=$(cat $datapoint)
+    AVG=$(echo "scale=2; $AVG + $val" | bc -l)
+done
+AVG=$(echo "scale=2; $AVG / 10" | bc )
+echo $AVG

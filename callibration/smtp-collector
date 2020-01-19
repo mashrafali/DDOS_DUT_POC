@@ -1,0 +1,7 @@
+root@DDOS-Client:~/shockWave/Calibration/DATA-POINTS/BIN# cat make-smtp-1
+#! /bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+cd /root/shockWave/Calibration/DATA-POINTS/
+
+cd smtp/
+cat smtp-1.DP

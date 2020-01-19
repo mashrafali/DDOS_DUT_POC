@@ -1,0 +1,18 @@
+- The following Script was used to create another 67 Scripts.
+
+
+root@DDOS-Client:~/shockWave/Calibration/DATA-POINTS/BIN# cat MAKE.CREATE 
+#! /bin/bash
+
+
+for i in {1..10}
+do
+echo "#! /bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+cd /root/shockWave/Calibration/DATA-POINTS/
+
+cd icmp/
+cat icmp-$i.DP
+
+" > make-icmp-$i
+done

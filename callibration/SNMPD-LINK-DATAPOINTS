@@ -1,0 +1,89 @@
+- In order for all those collectors to be active in the SNMP query, we added them as execute upon query.
+
+
+root@DDOS-Client:~/shockWave/Calibration# cat /etc/snmp/snmpd.conf
+#  Listen for connections from the local system only
+agentAddress  udp:127.0.0.1:161
+#  Listen for connections on eth0 only
+agentAddress  udp:192.168.0.131:161
+
+## System location and contact information
+syslocation NOOR
+syscontact NOOR-SYSTEMS
+
+rocommunity TeSt0FDd0S
+
+
+### Calibration Extensions ###
+##HTTP
+extend .1.3.6.1.4.1.10001.1 http-calib1 /root/shockWave/Calibration/DATA-POINTS/BIN/make-http-1 
+extend .1.3.6.1.4.1.10001.2 http-calib2 /root/shockWave/Calibration/DATA-POINTS/BIN/make-http-2 
+extend .1.3.6.1.4.1.10001.3 http-calib3 /root/shockWave/Calibration/DATA-POINTS/BIN/make-http-3 
+extend .1.3.6.1.4.1.10001.4 http-calib4 /root/shockWave/Calibration/DATA-POINTS/BIN/make-http-4 
+extend .1.3.6.1.4.1.10001.5 http-calib5 /root/shockWave/Calibration/DATA-POINTS/BIN/make-http-5 
+extend .1.3.6.1.4.1.10001.6 http-calib6 /root/shockWave/Calibration/DATA-POINTS/BIN/make-http-6 
+extend .1.3.6.1.4.1.10001.7 http-calib7 /root/shockWave/Calibration/DATA-POINTS/BIN/make-http-7 
+extend .1.3.6.1.4.1.10001.8 http-calib8 /root/shockWave/Calibration/DATA-POINTS/BIN/make-http-8 
+extend .1.3.6.1.4.1.10001.9 http-calib9 /root/shockWave/Calibration/DATA-POINTS/BIN/make-http-9 
+extend .1.3.6.1.4.1.10001.10 http-calib10 /root/shockWave/Calibration/DATA-POINTS/BIN/make-http-10 
+extend .1.3.6.1.4.1.10001.11 http-calibAVG /root/shockWave/Calibration/DATA-POINTS/BIN/make-http-AVG
+##HTTPS
+extend .1.3.6.1.4.1.10002.1 https-calib1 /root/shockWave/Calibration/DATA-POINTS/BIN/make-https-1 
+extend .1.3.6.1.4.1.10002.2 https-calib2 /root/shockWave/Calibration/DATA-POINTS/BIN/make-https-2 
+extend .1.3.6.1.4.1.10002.3 https-calib3 /root/shockWave/Calibration/DATA-POINTS/BIN/make-https-3 
+extend .1.3.6.1.4.1.10002.4 https-calib4 /root/shockWave/Calibration/DATA-POINTS/BIN/make-https-4 
+extend .1.3.6.1.4.1.10002.5 https-calib5 /root/shockWave/Calibration/DATA-POINTS/BIN/make-https-5 
+extend .1.3.6.1.4.1.10002.6 https-calib6 /root/shockWave/Calibration/DATA-POINTS/BIN/make-https-6 
+extend .1.3.6.1.4.1.10002.7 https-calib7 /root/shockWave/Calibration/DATA-POINTS/BIN/make-https-7 
+extend .1.3.6.1.4.1.10002.8 https-calib8 /root/shockWave/Calibration/DATA-POINTS/BIN/make-https-8 
+extend .1.3.6.1.4.1.10002.9 https-calib9 /root/shockWave/Calibration/DATA-POINTS/BIN/make-https-9 
+extend .1.3.6.1.4.1.10002.10 https-calib10 /root/shockWave/Calibration/DATA-POINTS/BIN/make-https-10
+extend .1.3.6.1.4.1.10002.11 https-calibAVG /root/shockWave/Calibration/DATA-POINTS/BIN/make-https-AVG 
+##FTP
+extend .1.3.6.1.4.1.10003.1 ftp-calib1 /root/shockWave/Calibration/DATA-POINTS/BIN/make-ftp-1 
+extend .1.3.6.1.4.1.10003.2 ftp-calib2 /root/shockWave/Calibration/DATA-POINTS/BIN/make-ftp-2 
+extend .1.3.6.1.4.1.10003.3 ftp-calib3 /root/shockWave/Calibration/DATA-POINTS/BIN/make-ftp-3 
+extend .1.3.6.1.4.1.10003.4 ftp-calib4 /root/shockWave/Calibration/DATA-POINTS/BIN/make-ftp-4 
+extend .1.3.6.1.4.1.10003.5 ftp-calib5 /root/shockWave/Calibration/DATA-POINTS/BIN/make-ftp-5 
+extend .1.3.6.1.4.1.10003.6 ftp-calib6 /root/shockWave/Calibration/DATA-POINTS/BIN/make-ftp-6 
+extend .1.3.6.1.4.1.10003.7 ftp-calib7 /root/shockWave/Calibration/DATA-POINTS/BIN/make-ftp-7 
+extend .1.3.6.1.4.1.10003.8 ftp-calib8 /root/shockWave/Calibration/DATA-POINTS/BIN/make-ftp-8 
+extend .1.3.6.1.4.1.10003.9 ftp-calib9 /root/shockWave/Calibration/DATA-POINTS/BIN/make-ftp-9 
+extend .1.3.6.1.4.1.10003.10 ftp-calib10 /root/shockWave/Calibration/DATA-POINTS/BIN/make-ftp-10
+extend .1.3.6.1.4.1.10003.11 ftp-calibAVG /root/shockWave/Calibration/DATA-POINTS/BIN/make-ftp-AVG
+##SMTP
+extend .1.3.6.1.4.1.10004.1 smtp-calib1 /root/shockWave/Calibration/DATA-POINTS/BIN/make-smtp-1 
+extend .1.3.6.1.4.1.10004.2 smtp-calib2 /root/shockWave/Calibration/DATA-POINTS/BIN/make-smtp-2 
+extend .1.3.6.1.4.1.10004.3 smtp-calib3 /root/shockWave/Calibration/DATA-POINTS/BIN/make-smtp-3 
+extend .1.3.6.1.4.1.10004.4 smtp-calib4 /root/shockWave/Calibration/DATA-POINTS/BIN/make-smtp-4 
+extend .1.3.6.1.4.1.10004.5 smtp-calib5 /root/shockWave/Calibration/DATA-POINTS/BIN/make-smtp-5 
+extend .1.3.6.1.4.1.10004.6 smtp-calib6 /root/shockWave/Calibration/DATA-POINTS/BIN/make-smtp-6 
+extend .1.3.6.1.4.1.10004.7 smtp-calib7 /root/shockWave/Calibration/DATA-POINTS/BIN/make-smtp-7 
+extend .1.3.6.1.4.1.10004.8 smtp-calib8 /root/shockWave/Calibration/DATA-POINTS/BIN/make-smtp-8 
+extend .1.3.6.1.4.1.10004.9 smtp-calib9 /root/shockWave/Calibration/DATA-POINTS/BIN/make-smtp-9 
+extend .1.3.6.1.4.1.10004.10 smtp-calib10 /root/shockWave/Calibration/DATA-POINTS/BIN/make-smtp-10 
+extend .1.3.6.1.4.1.10004.11 smtp-calibAVG /root/shockWave/Calibration/DATA-POINTS/BIN/make-smtp-AVG
+##DNS
+extend .1.3.6.1.4.1.10005.1 dns-calib1 /root/shockWave/Calibration/DATA-POINTS/BIN/make-dns-1 
+extend .1.3.6.1.4.1.10005.2 dns-calib2 /root/shockWave/Calibration/DATA-POINTS/BIN/make-dns-2 
+extend .1.3.6.1.4.1.10005.3 dns-calib3 /root/shockWave/Calibration/DATA-POINTS/BIN/make-dns-3 
+extend .1.3.6.1.4.1.10005.4 dns-calib4 /root/shockWave/Calibration/DATA-POINTS/BIN/make-dns-4 
+extend .1.3.6.1.4.1.10005.5 dns-calib5 /root/shockWave/Calibration/DATA-POINTS/BIN/make-dns-5 
+extend .1.3.6.1.4.1.10005.6 dns-calib6 /root/shockWave/Calibration/DATA-POINTS/BIN/make-dns-6 
+extend .1.3.6.1.4.1.10005.7 dns-calib7 /root/shockWave/Calibration/DATA-POINTS/BIN/make-dns-7 
+extend .1.3.6.1.4.1.10005.8 dns-calib8 /root/shockWave/Calibration/DATA-POINTS/BIN/make-dns-8 
+extend .1.3.6.1.4.1.10005.9 dns-calib9 /root/shockWave/Calibration/DATA-POINTS/BIN/make-dns-9 
+extend .1.3.6.1.4.1.10005.10 dns-calib10 /root/shockWave/Calibration/DATA-POINTS/BIN/make-dns-10 
+extend .1.3.6.1.4.1.10005.11 dns-calibAVG /root/shockWave/Calibration/DATA-POINTS/BIN/make-dns-AVG
+##ICMP
+extend .1.3.6.1.4.1.10006.1 icmp-calib1 /root/shockWave/Calibration/DATA-POINTS/BIN/make-icmp-1 
+extend .1.3.6.1.4.1.10006.2 icmp-calib2 /root/shockWave/Calibration/DATA-POINTS/BIN/make-icmp-2 
+extend .1.3.6.1.4.1.10006.3 icmp-calib3 /root/shockWave/Calibration/DATA-POINTS/BIN/make-icmp-3 
+extend .1.3.6.1.4.1.10006.4 icmp-calib4 /root/shockWave/Calibration/DATA-POINTS/BIN/make-icmp-4 
+extend .1.3.6.1.4.1.10006.5 icmp-calib5 /root/shockWave/Calibration/DATA-POINTS/BIN/make-icmp-5 
+extend .1.3.6.1.4.1.10006.6 icmp-calib6 /root/shockWave/Calibration/DATA-POINTS/BIN/make-icmp-6 
+extend .1.3.6.1.4.1.10006.7 icmp-calib7 /root/shockWave/Calibration/DATA-POINTS/BIN/make-icmp-7 
+extend .1.3.6.1.4.1.10006.8 icmp-calib8 /root/shockWave/Calibration/DATA-POINTS/BIN/make-icmp-8 
+extend .1.3.6.1.4.1.10006.9 icmp-calib9 /root/shockWave/Calibration/DATA-POINTS/BIN/make-icmp-9 
+extend .1.3.6.1.4.1.10006.10 icmp-calib10 /root/shockWave/Calibration/DATA-POINTS/BIN/make-icmp-10 
+extend .1.3.6.1.4.1.10006.11 icmp-calibAVG /root/shockWave/Calibration/DATA-POINTS/BIN/make-icmp-AVG

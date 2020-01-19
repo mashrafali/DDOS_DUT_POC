@@ -1,0 +1,9 @@
+HTTP Collector for Clients 1 through 10
+
+root@DDOS-Client:~/shockWave/Calibration/DATA-POINTS/BIN# cat make-http-1
+#! /bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+cd /root/shockWave/Calibration/DATA-POINTS/
+
+cd htts/
+cat htts-1.DP

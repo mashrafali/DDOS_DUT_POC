@@ -1,0 +1,9 @@
+HTTPS Collector for Clients 1 through 10
+
+root@DDOS-Client:~/shockWave/Calibration/DATA-POINTS/BIN# cat make-https-1
+#! /bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+cd /root/shockWave/Calibration/DATA-POINTS/
+
+cd https/
+cat https-1.DP
