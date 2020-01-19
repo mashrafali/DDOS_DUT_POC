@@ -1,0 +1,27 @@
+root@DDOS-Client:~/shockWave/LEGIT# cat KILL-MIX 
+#! /bin/bash
+
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+
+#KILL LOOP ITSELF IF NEEDED
+#pkill loop-for-ram && pkill loop-for-ram && pkill loop-for-ram && pkill loop-for-ram && pkill loop-for-ram
+
+pkill start-http && pkill start-http && pkill start-http && pkill start-http && pkill start-http && pkill start-http
+
+pkill start-https && pkill start-https && pkill start-https && pkill start-https && pkill start-https && pkill start-https
+
+pkill start-smtp && pkill start-smtp && pkill start-smtp && pkill start-smtp && pkill start-smtp && pkill start-smtp
+
+pkill start-dns && pkill start-dns && pkill start-dns && pkill start-dns && pkill start-dns && pkill start-dns
+
+pkill start-ping && pkill start-ping && pkill start-ping && pkill start-ping && pkill start-ping && pkill start-ping
+
+pkill start-ftp && pkill start-ftp && pkill start-ftp && pkill start-ftp && pkill start-ftp && pkill start-ftp
+
+pkill wget && pkill wget && pkill wget && pkill wget && pkill wget && pkill wget
+
+pkill nslookup && pkill nslookup && pkill nslookup && pkill nslookup && pkill nslookup && pkill nslookup
+
+pkill ping && pkill ping && pkill ping && pkill ping && pkill ping && pkill ping
+
+swapoff -a && swapon -a

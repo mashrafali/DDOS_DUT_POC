@@ -1,0 +1,18 @@
+root@DDOS-Client:~/shockWave/Calibration# cat calib-ftp
+#! /bin/bash
+
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+cd /root/shockWave/Calibration/temp-cluster
+
+calibT="192.168.0.66"
+#calibS='30.30.$i.1'
+calibS="192.168.0.131"
+
+for i in {1..10}
+do
+  wget --bind-address=$calibS ftp://core:core@$calibT/ftp-files/test1m -O ftp-$i.file 2> /root/shockWave/Calibration/temp-cluster/ftp-$i.calib
+  client=$(cat /root/shockWave/Calibration/temp-cluster/ftp-$i.calib | grep -i "100%" | awk '{print $4}' | cut -d "=" -f2 | cut -d "s" -f1)
+  value=$(echo $client*1000 | bc )
+  echo FTP Client$i is $value MilliSEC
+  echo $value > /root/shockWave/Calibration/DATA-POINTS/ftp/ftp-$i.DP
+done

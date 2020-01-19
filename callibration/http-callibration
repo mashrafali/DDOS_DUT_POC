@@ -1,0 +1,17 @@
+root@DDOS-Client:~/shockWave/Calibration# cat calib-http
+#! /bin/bash
+
+#TIMES OUT AT MAX 25 SECONDS
+
+calibT="http://192.168.0.66/"
+
+for i in {1..10}
+do
+  siege -c 1000 -r 1 $calibT > /root/shockWave/Calibration/temp-cluster/http-$i.calib 2>&1
+  client=$(cat /root/shockWave/Calibration/temp-cluster/http-$i.calib | grep -i "Transaction rate:" | awk '{print $3}')
+  #value=$(echo $client*1000 | bc )
+  value=$(echo $client)
+  echo HTTP Client$i is $value Trans/sec
+
+  echo $value > /root/shockWave/Calibration/DATA-POINTS/http/http-$i.DP
+done

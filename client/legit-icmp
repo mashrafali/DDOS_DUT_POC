@@ -1,0 +1,18 @@
+root@DDOS-Client:~/shockWave/LEGIT# cat start-ping 
+#! /bin/bash
+
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+cd /root/shockWave/LEGIT/temp-cluster
+sleep 1
+n=1
+many=250
+while true
+do
+    for i in `seq 1 $many`;
+    do
+       echo -en "                                                                                            ## Ping Count $n" \\r
+       ping -c 1 -I 30.30.$i.1 10.10.10.2 > /dev/null 2>&1
+       sleep 0.1
+       let n=n+1
+    done
+done

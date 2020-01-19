@@ -1,0 +1,40 @@
+root@DDOS-Client:~/shockWave/LEGIT# cat start-http
+#! /bin/bash
+
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+many=250
+echo
+touch /root/shockWave/LEGIT/temp-cluster/temp-http-300
+echo "Cleaning HTTP Temp Cluster...[OK]"
+rm -r /root/shockWave/LEGIT/temp-cluster/temp-http-*
+echo
+
+while true
+do
+check=$(ps aux | grep -i wget | grep -i "http:" | head -1 | grep -o "limit")
+if [ -z "$check" ]
+then
+    for i in `seq 1 $many`;
+    do
+       mkdir /root/shockWave/LEGIT/temp-cluster/temp-http-$i > /dev/null 2>&1
+       cd /root/shockWave/LEGIT/temp-cluster/temp-http-$i
+       echo -en "                   ## Deploying HTTP Client $i/$many" \\r
+       wget --bind-address=30.30.$i.1 --limit-rate=10K -r -p -l 2 -T 60 --random-wait --user-agent="Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.3) Gecko/2008092416 Firefox/3.0.3" --convert-links http://10.10.10.2/ > /dev/null 2>&1 &
+       sleep 0.1
+    done
+else
+    echo "                   Waiting for Active Clients..."
+fi
+sleep 1
+done
+
+
+# --bind-address=ADDRESS    bind to ADDRESS (hostname or IP) on local host.
+# --limit-rate=RATE         limit download rate to RATE.
+# -p,  --page-requisites    get all images, etc. needed to display HTML page.
+# -r,  --recursive          specify recursive download.
+# -l,  --level=NUMBER       maximum recursion depth (inf or 0 for infinite).
+# -T,  --timeout=SECONDS    set all timeout values to SECONDS.
+# --random-wait             wait from 0.5*WAIT...1.5*WAIT secs between retrievals.
+# --user-agent=AGENT        identify as AGENT instead of Wget/VERSION.
+# --convert-links           make links in downloaded HTML or CSS point to local files.

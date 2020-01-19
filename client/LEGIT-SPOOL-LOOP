@@ -1,0 +1,11 @@
+root@DDOS-Client:~/shockWave/LEGIT# cat loop-for-ram 
+#! /bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+cd /root/shockWave/LEGIT/temp-cluster
+
+while true
+do
+    /root/shockWave/LEGIT/START-MIX &
+    sleep 300
+    /root/shockWave/LEGIT/KILL-MIX
+done

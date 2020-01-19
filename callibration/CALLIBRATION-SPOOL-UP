@@ -1,0 +1,15 @@
+root@DDOS-Client:~/shockWave/Calibration# cat CALIB-MIX 
+#! /bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+cd /root/shockWave/Calibration/temp-cluster
+
+/root/shockWave/Calibration/calib-http &
+/root/shockWave/Calibration/calib-https &
+/root/shockWave/Calibration/calib-smtp &
+/root/shockWave/Calibration/calib-dns &
+/root/shockWave/Calibration/calib-ping &
+/root/shockWave/Calibration/calib-ftp &
+Then Cron it over whatever time period needed.
+
+
+* * * * * /root/shockWave/Calibration/CALIB-MIX

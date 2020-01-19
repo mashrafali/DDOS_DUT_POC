@@ -1,0 +1,11 @@
+root@DDOS-Client:~/shockWave/LEGIT# cat START-MIX 
+#! /bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+cd /root/shockWave/LEGIT/temp-cluster
+
+/root/shockWave/LEGIT/start-http &
+/root/shockWave/LEGIT/start-https &
+/root/shockWave/LEGIT/start-smtp &
+/root/shockWave/LEGIT/start-dns &
+/root/shockWave/LEGIT/start-ping &
+/root/shockWave/LEGIT/start-ftp &

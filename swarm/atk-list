@@ -1,0 +1,33 @@
+root@The-SWARM:~# cat /usr/bin/list
+#! /bin/bash
+echo
+echo "##### ATTACKS CONFIGURED:"
+echo
+echo "Layer-4 DOS Attacks:"
+echo "--------------------"
+echo "ATTACK-1  : SYN flood"
+echo "ATTACK-2  : SYN-ACK flood"
+echo "ATTACK-3  : Random (but identical across packet) payload (20 bytes payload)"
+echo "ATTACK-4  : RST flood"
+echo "ATTACK-5  : Synonymous payload (20 bytes payload) with spoofed source of victim itself"
+echo "ATTACK-6  : SSH Brute Force"
+echo "ATTACK-7  : Random (but identical across packet) UDP payload (20 bytes payload)"
+echo "ATTACK-8  : Fragmentation Random Payload - UDP PAYLOAD"
+echo "ATTACK-9  : DNS Payload to DNS port flood"
+echo "ATTACK-10 : ICMP code-5 FLOOD"
+echo "ATTACK-11 : ICMP code-5 FRAG FLOOD"
+echo "ATTACK-12 : ICMP code-8 FLOOD"
+echo
+echo "Layer-7 DOS Attacks:"
+echo "--------------------"
+echo "ATTACK-13 : SLOW-LORIS HTTP ATTACK"
+echo "ATTACK-14 : SLOW-POST HTTP ATTACK"
+echo "ATTACK-15 : SLOW-READ HTTP ATTACK"
+echo
+echo "Custom Built DOS Attacks:"
+echo "--------------------"
+echo "ATTACK-20 : CHRISTMAS ATTACK"
+echo
+echo "ATTACk-CHECK : Check current Running Attacks"
+echo "ATTACK-STOP  : Stop All Active Attacks"
+echo

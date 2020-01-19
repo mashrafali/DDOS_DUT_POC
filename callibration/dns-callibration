@@ -1,0 +1,28 @@
+root@DDOS-Client:~/shockWave/Calibration# cat calib-dns
+#! /bin/bash
+
+#TIMES OUT AT MAX 25 SECONDS
+
+calibT="192.168.0.66"
+#calibS='30.30.$i.1'
+calibS="192.168.0.131"
+
+for i in {1..10}
+do
+  dig -b $calibS @$calibT core.myhome.net    > /root/shockWave/Calibration/temp-cluster/dns1-$i.calib 2>&1
+  dig -b $calibS @$calibT gw.myhome.net      > /root/shockWave/Calibration/temp-cluster/dns2-$i.calib 2>&1
+  dig -b $calibS @$calibT control.myhome.net > /root/shockWave/Calibration/temp-cluster/dns3-$i.calib 2>&1
+  dig -b $calibS @$calibT ns.myhome.net      > /root/shockWave/Calibration/temp-cluster/dns4-$i.calib 2>&1
+  dig -b $calibS @$calibT dns.myhome.net     > /root/shockWave/Calibration/temp-cluster/dns5-$i.calib 2>&1
+  dig -b $calibS @$calibT media.myhome.net   > /root/shockWave/Calibration/temp-cluster/dns6-$i.calib 2>&1
+  dig -b $calibS @$calibT lb.myhome.net      > /root/shockWave/Calibration/temp-cluster/dns7-$i.calib 2>&1
+  let value=0
+  for j in {1..7}
+  do
+    client=$(cat /root/shockWave/Calibration/temp-cluster/dns$j-$i.calib | grep -i "Query time:" | awk '{print $4}')
+    clres=$(echo $client)
+    let value=value+$clres
+  done
+  echo DNS Client$i is $value MilliSEC
+  echo $value > /root/shockWave/Calibration/DATA-POINTS/dns/dns-$i.DP
+done

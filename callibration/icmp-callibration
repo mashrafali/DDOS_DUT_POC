@@ -1,0 +1,17 @@
+root@DDOS-Client:~/shockWave/Calibration# cat calib-ping 
+#! /bin/bash
+
+#TIMES OUT AT MAX 25 SECONDS
+
+calibT="192.168.0.66"
+#calibS="30.30.$i.1"
+calibS="192.168.0.131"
+
+for i in {1..10}
+do
+  ping -c 1 -I $calibS $calibT > /root/shockWave/Calibration/temp-cluster/ping-$i.calib 2>&1
+  client=$(cat /root/shockWave/Calibration/temp-cluster/ping-$i.calib | grep -i "time=" | awk '{print $7}' | cut -d "=" -f2)
+  value=$(echo $client*1000 | bc)
+  echo ICMP Client$i is $value MicroSEC
+  echo $value > /root/shockWave/Calibration/DATA-POINTS/icmp/icmp-$i.DP 
+done

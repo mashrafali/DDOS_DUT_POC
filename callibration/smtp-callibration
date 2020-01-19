@@ -1,0 +1,15 @@
+root@DDOS-Client:~/shockWave/Calibration# cat calib-smtp 
+#! /bin/bash
+
+#TIMES OUT AT MAX 25 SECONDS
+
+calibT="192.168.0.66:25"
+
+for i in {1..10}
+do
+  { time smtp-source -s 40 -l 10120 -m 50 -c -f root@client.com -t root@victim.com $calibT ; } &> /root/shockWave/Calibration/temp-cluster/smtp-$i.calib
+  client=$(cat /root/shockWave/Calibration/temp-cluster/smtp-$i.calib | grep -i "real" | awk '{print $2}' | cut -d "m" -f2 | cut -d "s" -f1)
+  value=$(echo $client*1000 | bc )
+  echo SMTP Client$i is $value MilliSEC
+  echo $value > /root/shockWave/Calibration/DATA-POINTS/smtp/smtp-$i.DP
+done

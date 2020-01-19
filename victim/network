@@ -1,0 +1,32 @@
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# PRIMARY IFACES
+allow-hotplug eth0
+iface eth0 inet static
+       address 192.168.0.66
+       netmask 255.255.255.0
+       network 192.168.0.0
+       broadcast 192.168.0.255
+#      gateway 192.168.0.1
+       name-servers 192.168.0.4
+
+allow-hotplug eth1
+iface eth1 inet static
+       address 10.10.10.2
+       netmask 255.255.255.0
+       network 10.10.10.0
+       broadcast 10.10.10.255
+       gateway 10.10.10.1
+#      mtu 800
+
+#STATICS
+up route add -net 192.168.0.0/16 gw 192.168.0.1 dev eth0
+up route add -net 10.172.99.0/24 gw 192.168.0.1 dev eth0
+
+## Client RESPONCE:
+up route add -net 30.30.0.0/16 gw 10.10.10.1 dev eth1
+
+## ATTACK RESPONCE:
+#up route add -net 100.200.0.0/16 gw 10.10.10.1 dev eth1

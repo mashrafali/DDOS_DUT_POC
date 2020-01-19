@@ -1,0 +1,42 @@
+root@DDoS-Victim:/etc/bind# cat /etc/vsftpd.conf
+listen=YES
+
+anonymous_enable=YES
+
+local_enable=YES
+
+write_enable=YES
+
+local_umask=022
+
+anon_upload_enable=YES
+
+anon_mkdir_write_enable=YES
+
+dirmessage_enable=YES
+
+use_localtime=YES
+
+xferlog_enable=YES
+
+connect_from_port_20=YES
+
+secure_chroot_dir=/var/run/vsftpd/empty
+
+pam_service_name=vsftpd
+
+rsa_cert_file=/etc/ssl/private/vsftpd.pem
+
+chroot_local_user=YES
+- FTP Directory has been created under user "core"
+
+
+root@DDoS-Victim:/home/core/ftp-files# pwd
+/home/core/ftp-files
+- Two test files created for FTP Transfer test, 1M & 10M.
+
+
+root@DDoS-Victim:/home/core/ftp-files# ls -lh
+total 11M
+-rw-r--r-- 1 root root  9.9M Jun 10 10:12 test10m
+-rw-r--r-- 1 root root 1006K Jun 10 10:09 test1m
