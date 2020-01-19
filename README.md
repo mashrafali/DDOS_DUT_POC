@@ -9,9 +9,6 @@ Distributed Denial Of Service: Device Under Test Proof Of Concept (DDOS DUT POC)
 
 ## The main requirements
 1- Deploy a victim system, with almost all well known services configured and deployed.
-
 2- Deploy An Attacker System capable of Utilizing and deploying several Layer-4 & 7 DDOS Attacks.
-
 3- Deploy a Client System, where it well generate and request Legitimate traffic in correspondence with the Victim.
-
 4- Deploy a Calibration System, in order to act as a dependable performance measurement through out all the phases of the POC.
