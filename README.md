@@ -15,3 +15,29 @@ Distributed Denial Of Service: Device Under Test Proof Of Concept (DDOS DUT POC)
 3- Deploy a Client System, where it well generate and request Legitimate traffic in correspondence with the Victim.
 
 4- Deploy a Calibration System, in order to act as a dependable performance measurement through out all the phases of the POC.
+
+-----
+
+# The Victim
+
+- The Victim is the System which is going to be under Attack by the Attacker (The Swarm) and under protection by the DDOS DUT.
+
+## System Specifications
+
+- The Victim Server held the following Specs:
+
+OS: Debian 8.1 (Jessie)
+
+CPU: 4xCore
+
+RAM: 4GB
+
+Swap: 8GB
+
+Disk: 500GB
+
+## Preparing The Server
+
+1- First Comes the network configuration, which includes Mang. Iface and the Data Traffic Iface
+
+2- Add Routes in order to respond to the victim Legitimate Traffic, and the Swarm Layer-7 Attacks.
